@@ -42,8 +42,6 @@ def match(l):
     
     for i in range(len(l)/2):
         for j in reversed(range(i,len(l))):
-            print i,j
-            
             
             if (j <= len(l)-1) and (j > i) and (j != i):
                 if infinite(l[i],l[j]):
