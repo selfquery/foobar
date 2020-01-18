@@ -30,3 +30,37 @@ solution.solution([1, 7, 3, 21, 13, 19])
 Output:
     0
 """
+
+from fractions import gcd
+
+def infinite(a,b):
+    x = (a + b) / gcd(a, b) 
+    return bool((x - 1) & x)
+
+def match(l):
+    c,t = 0,[]
+    
+    for i in range(len(l)/2):
+        for j in reversed(range(i,len(l))):
+            print i,j
+            
+            
+            if (j <= len(l)-1) and (j > i) and (j != i):
+                if infinite(l[i],l[j]):
+                    
+                    if (0 <= i <= len(l)) and (len(l) > 0):
+                        t.append(l.pop(i))
+                        c += 1
+                    if (0 <= j <= len(l)) and (len(l) > 0):
+                        t.append(l.pop(j-1))
+                        c += 1
+    
+    return c
+
+def solution(l):
+    o = len(l)
+    l.sort()
+    
+    m = match(l)
+    
+    return (o - m)
